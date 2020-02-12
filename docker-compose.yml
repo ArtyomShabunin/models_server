@@ -1,0 +1,46 @@
+version: "2"
+services:
+  model_sever_api:
+    image: model_server:latest 
+    build: ./models_server
+    depends_on:
+      - redis
+    links:
+      - db
+      - redis
+    ports:
+      - "5001:5000"
+    volumes:
+      - ./models_server/models_server:/models_server
+
+  db:
+    image: mysql
+    ports:
+      - "3306:3306"
+    security_opt:
+      - seccomp:unconfined
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d/:ro
+
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./redis:/data
+
+  worker:
+    image: model_server:latest
+    command: bash -c "
+        rq worker --url redis://redis:6379 tasks_queue
+        && rq worker --url redis://redis:6379 tasks_queue
+      "
+    depends_on:
+      - redis
+    links:
+      - redis
+    volumes:
+      - ./models_server/models_server:/models_server
+
