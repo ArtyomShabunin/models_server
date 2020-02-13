@@ -1,0 +1,15 @@
+FROM continuumio/miniconda3:latest
+
+EXPOSE 5000
+
+# Create the environment:
+COPY environment.yml .
+RUN conda env create -f environment.yml
+
+# Make RUN commands use the new environment:
+#SHELL ["conda", "run", "-n", "myenv", "/bin/bash", "-c"]
+
+WORKDIR /models_server
+
+#CMD ["conda", "run", "-n", "myenv", "python", "runserver.py"]
+ENTRYPOINT ["conda", "run", "-n", "myenv", "python", "runserver.py"]

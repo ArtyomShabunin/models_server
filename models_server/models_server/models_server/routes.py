@@ -9,8 +9,17 @@ from functools import wraps
 from redis import Redis
 from rq import Queue
 
+from models_server.tasks import example_1
+
 import time
 
+
+def example_2(seconds):
+    print('Starting task')
+    for i in range(seconds):
+        print(i)
+        time.sleep(1)
+    print('Task completed')
 
 def token_required(f):
     @wraps(f)
@@ -54,7 +63,7 @@ def get_all_users(current_user):
         user_data['password'] = user.password
         user_data['admin'] = user.admin
         output.append(user_data)
-    
+
     return jsonify({'users': output})
 
 @app.route('/user/<public_id>', methods=['GET'])
@@ -82,13 +91,13 @@ def create_user(current_user):
 
     if not current_user.admin:
         return jsonify({'message': 'Cannot perform that function!'})
-    
+
     data = request.get_json()
     hashed_password = generate_password_hash(data['password'], method='sha256')
     new_user = User(public_id=str(uuid.uuid4()), name=data['name'], password=hashed_password, admin=False)
     db.session.add(new_user)
     db.session.commit()
-    
+
     return jsonify({'message': 'New user created!'})
 
 @app.route('/user/<public_id>', methods=['PUT'])
@@ -97,14 +106,14 @@ def promote_user(current_user, public_id):
 
     if not current_user.admin:
         return jsonify({'message': 'Cannot perform that function!'})
-    
+
     user = User.query.filter_by(public_id=public_id).first()
     if not user:
         return jsonify({'message': 'No user found!'})
 
     user.admin = True
     db.session.commit()
-    
+
     return jsonify({'message': 'The user has been promoted!'})
 
 @app.route('/user/<public_id>', methods=['DELETE'])
@@ -113,14 +122,14 @@ def delete_user(current_user, public_id):
 
     if not current_user.admin:
         return jsonify({'message': 'Cannot perform that function!'})
-    
+
     user = User.query.filter_by(public_id=public_id).first()
     if not user:
         return jsonify({'message': 'No user found!'})
 
     db.session.delete(user)
     db.session.commit()
-    
+
     return jsonify({'message': 'The user has been deleted'})
 
 @app.route('/login')
@@ -144,6 +153,9 @@ def create_task():
 
     redis_conn = Redis(host='redis', port=6379, db=0)
     queue = Queue('tasks_queue', connection=redis_conn)
-    job = queue.enqueue('models_server.tasks.example_1', 23)
+    job = queue.enqueue(example_2, 23)
+
+
+
 
     return jsonify({'message': 'New task created!'})
