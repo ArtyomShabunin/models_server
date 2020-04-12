@@ -1,18 +1,17 @@
 import React, {Component} from 'react'
-import BookListItem from '../book-list-item'
 import {connect} from 'react-redux'
 
-import './book-list.css'
+import './frame-list.css'
 
-class BookList extends Component {
+class FrameList extends Component {
   render() {
     const {books} = this.props
     return (
-      <ul>
+      <ul className="list-group list-group-flush frame-list">
         {
           books.map((book) => {
             return (
-              <li key={book.id}><BookListItem book={book}/></li>
+              <li className="list-group-item bg-dark" key={book.id}><span>{book.author}</span></li>
             )
           })
         }
@@ -25,4 +24,4 @@ const mapStateToProps = ({books}) => {
   return {books}
 }
 
-export default connect(mapStateToProps)(BookList)
+export default connect(mapStateToProps)(FrameList)

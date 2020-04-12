@@ -1,9 +1,13 @@
 import HomePage from './home-page'
-import CartPage from './cart-page'
 import Dashboard from './dashboard'
+import ModelsPage from './models-page'
+import ControlPage from './control-page'
+import InfoPage from './info-page'
 
 export {
   HomePage,
-  CartPage,
-  Dashboard
+  Dashboard,
+  ModelsPage,
+  ControlPage,
+  InfoPage
 }

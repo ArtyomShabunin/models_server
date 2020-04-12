@@ -1,6 +1,6 @@
 import React from 'react'
 import {Route, Switch} from 'react-router-dom'
-import {HomePage, CartPage, Dashboard} from '../pages'
+import {HomePage, ModelsPage, Dashboard, ControlPage, InfoPage} from '../pages'
 
 import './app.css'
 
@@ -14,13 +14,23 @@ const App = () => {
       />
 
       <Route
-        path='/cart'
-        component={CartPage}
+        path='/models'
+        component={ModelsPage}
+      />
+
+      <Route
+        path='/control'
+        component={ControlPage}
       />
 
       <Route
         path='/dashboard'
         component={Dashboard}
+      />
+
+      <Route
+        path='/info'
+        component={InfoPage}
       />
 
     </Switch>

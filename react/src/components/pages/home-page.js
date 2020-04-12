@@ -1,9 +1,13 @@
 import React from 'react'
-import BookList from '../book-list'
+
+import AppHeader from '../app-header'
 
 const HomePage = () => {
   return (
-    <BookList/>
+    <div>
+      <AppHeader />
+      <span>Домашняя страница с новостями</span>
+    </div>
   )
 }
 
