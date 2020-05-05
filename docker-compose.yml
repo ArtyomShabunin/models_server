@@ -1,6 +1,6 @@
 version: "2"
 services:
-  models_sever_api:
+  models_server_api:
     image: models_server
     build:
       context: .
@@ -12,6 +12,9 @@ services:
       - redis
     ports:
       - "5001:5000"
+      - "8889:8888"
+    environment:
+      FLASK_APP: runserver.py
     volumes:
       - ./models_server/models_server:/models_server
 
