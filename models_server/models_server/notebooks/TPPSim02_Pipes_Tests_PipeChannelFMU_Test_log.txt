@@ -1,10 +1,3 @@
 FMIL: module = FMI2XML, log level = 4: Found model identifiers for ModelExchange and CoSimulation
 FMIL: module = FMILIB, log level = 4: Loading 'linux64' binary with 'default' platform types
 FMIL: module = Model, log level = 4: [logFmi2Call][FMU status:OK] fmi2Instantiate: GUID={06d03f16-06e5-4f0c-bddf-fdbfbf942c5b}
-FMIL: module = Model, log level = 4: [logFmi2Call][FMU status:OK] fmi2Terminate
-FMIL: module = Model, log level = 4: [logFmi2Call][FMU status:OK] fmi2FreeInstance
-FMIL: module = Model, log level = 4: [logFmi2Call][FMU status:OK] fmi2SetupExperiment: toleranceDefined=1 tolerance=0.001 startTime=0 stopTimeDefined=0 stopTime=700
-FMIL: module = Model, log level = 4: [logFmi2Call][FMU status:OK] fmi2EnterInitializationMode...
-FMIL: module = Model, log level = 4: [logFmi2Call][FMU status:OK] fmi2ExitInitializationMode...
-FMIL: module = Model, log level = 4: [logFmi2Call][FMU status:OK] fmi2EnterInitializationMode: succeed
-FMIL: module = Model, log level = 4: [logFmi2Call][FMU status:OK] fmi2ExitInitializationMode: succeed
