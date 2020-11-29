@@ -2,6 +2,8 @@ import React from 'react'
 import {Route, Switch} from 'react-router-dom'
 import {HomePage, ModelsPage, Dashboard, ControlPage, InfoPage} from '../pages'
 
+import {Canvas, CanvasTest} from '../svg'
+
 import './app.css'
 
 const App = () => {
@@ -31,6 +33,11 @@ const App = () => {
       <Route
         path='/info'
         component={InfoPage}
+      />
+
+      <Route
+        path='/test'
+        component={CanvasTest}
       />
 
     </Switch>

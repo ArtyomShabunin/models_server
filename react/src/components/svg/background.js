@@ -2,7 +2,7 @@ import React from 'react'
 
 const Background = () => {
   const backgroundStyle = {
-    fill: '#FFFFCC',
+    fill: '#e7dfde',
   }
   const backgroundWidth = 5000
   const backgroundHeight = 1200
