@@ -3,6 +3,7 @@ import GridLayout from 'react-grid-layout';
 import Draggable from 'react-draggable';
 
 import {Canvas} from '../svg'
+import {CanvasTest} from '../svg'
 import {Frame1} from '../frames'
 
 import './frames-space.css'
@@ -57,7 +58,9 @@ class FramesSpace extends Component {
         </div>
         <div key="c" className='block'>
           <div className='MyDragHandle title'>Window 3</div>
-          <div className='content'></div>
+          <div className='content'>
+            <CanvasTest/>
+          </div>
         </div>
         <div key="d" className='block'>
           <div className='MyDragHandle title'>Window 4</div>

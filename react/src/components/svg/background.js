@@ -4,13 +4,13 @@ const Background = () => {
   const backgroundStyle = {
     fill: '#e7dfde',
   }
-  const backgroundWidth = 5000
-  const backgroundHeight = 1200
+  const backgroundWidth = 1400
+  const backgroundHeight = 900
   return (
     <rect
       style={backgroundStyle}
-      x={backgroundWidth / -2}
-      y={-backgroundHeight}
+      x={0}
+      y={0}
       width={backgroundWidth}
       height={backgroundHeight}
     />
