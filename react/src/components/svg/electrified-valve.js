@@ -13,7 +13,8 @@ const ElectrifiedValve= (props) => {
     fill: 'black',
   }
 
-  const transform = `rotate(${props.rotation}, 0, 0)`;
+  const transform = `rotate(${props.rotation}, 0, 0) scale(${props.scale})`
+  const id = props.id
 
   return (
     <g>
