@@ -4,6 +4,8 @@ import {HomePage, ModelsPage, Dashboard, ControlPage, InfoPage} from '../pages'
 
 import {Canvas, CanvasTest} from '../svg'
 
+import MetsoHeader from '../metso-header'
+
 import './app.css'
 
 const App = () => {
@@ -38,6 +40,11 @@ const App = () => {
       <Route
         path='/test'
         component={CanvasTest}
+      />
+
+      <Route
+        path='/test2'
+        component={MetsoHeader}
       />
 
     </Switch>
